@@ -1,5 +1,4 @@
 # Create your views here.
-# detection/views.py
 
 from django.shortcuts import render
 from django.apps import apps
