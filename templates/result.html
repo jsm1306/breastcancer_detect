@@ -3,23 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Breast Cancer Detection</title>
+
+    
+    <script>
+        function updateFileName() {
+            const fileInput = document.getElementById('image');
+            const fileNameDisplay = document.getElementById('file-name');
+            if (fileInput.files.length > 0) {
+                fileNameDisplay.textContent = fileInput.files[0].name;
+            } else {
+                fileNameDisplay.textContent = "Drag file(s) here or click to browse";
+            }
+        }
+    </script>
 </head>
 <body>
     <h1>Breast Cancer Detection</h1>
     
     <form method="POST" enctype="multipart/form-data" action="{% url 'predict_image' %}">
         {% csrf_token %}
-        <label for="image">Upload a histopathological image:</label>
-        <input type="file" name="image" id="image" required>
-        <button type="submit">Predict</button>
+        
+        <div class="upload-container" onclick="document.getElementById('image').click()">
+            <label id="file-name">Drag file(s) here or click to browse</label>
+            <input type="file" name="image" id="image" required onchange="updateFileName()">
+        </div>
+        
+        <button type="submit" class="predict-button">Predict</button>
     </form>
 
     {% if prediction %}
-        <h2>Prediction Result: {{ prediction }}</h2>
-        <h3>Uploaded Image:</h3>
-        <img src="data:image/png;base64,{{ image_data }}" alt="Uploaded Image" style="max-width: 400px;">
+        <div class="prediction-container">
+            <div class="prediction-title">Prediction:</div>
+            <div class="prediction-result">{{ prediction }}</div>
+            <h3>Uploaded Image:</h3>
+            <img src="data:image/png;base64,{{ image_data }}" alt="Uploaded Image">
+        </div>
     {% elif error %}
-        <h2>Error: {{ error }}</h2>
+        <div class="prediction-container">
+            <div class="prediction-title">Error:</div>
+            <div class="prediction-result">{{ error }}</div>
+        </div>
     {% endif %}
+
+    <div class="button-container">
+        <a href="{% url 'home' %}">
+            <button class="btn btn-success">Home</button>
+        </a>
+    </div>
 </body>
 </html>

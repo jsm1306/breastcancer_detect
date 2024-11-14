@@ -1,3 +1,62 @@
-<h1>Welcome to the Breast Cancer Detection App</h1>
-<p>Please upload an image for detection.</p>
-<a href="{% url 'predict_image' %}">Go to Image Prediction</a>
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breast Cancer Detection</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <h1>Frequently Asked Questions about Breast Cancer</h1>
+    
+    <div class="faq-container">
+        <!-- Card 1 -->
+        <div class="faq-card">
+            <h2>What are the symptoms of breast cancer?</h2>
+            <p>Common symptoms include lumps in the breast, changes in breast shape, or unusual discharge.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="faq-card">
+            <h2>How is breast cancer diagnosed?</h2>
+            <p>Diagnosis involves screening tests like mammograms, ultrasounds, and biopsies.</p>
+       
+        </div>
+
+        <!-- Card 3 -->
+        <div class="faq-card">
+            <h2>What treatment options are available?</h2>
+            <p>Treatment can include surgery, radiation, chemotherapy, hormone therapy, and targeted therapy.</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="faq-card">
+            <h2>How is AI Used to Detect Breast Cancer?</h2>
+            <p>AI helps radiologists detect breast cancer by analyzing medical images for patterns, often spotting abnormalities that might be missed by human eyes.</p>
+            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10625863/#:~:text=In%20the%20diagnostic%20workflow%20for,into%20clinical%20practice%20is%20challenging.">AI in early detection</a>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="faq-card">
+            <h2>Can Breast Cancer Be Found Early?</h2>
+            <p>Breast cancer is sometimes found after symptoms appear, but many women with breast cancer have no symptoms. </p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="faq-card">
+            <h2>What are the Risk Factors for Breast Cancer?</h2>
+            <p>Risk factors include age, family history, and lifestyle choices.</p>
+            <a href="#"></a>
+        </div>
+        
+    </div>
+    <h1>Please upload an image for detection.</h1>
+
+        <a href="{% url 'predict_image' %}">
+            <button class="predict-button2">Go to Image Prediction</button>
+        </a>
+</body>
+</html>
