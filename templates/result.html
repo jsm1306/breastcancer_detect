@@ -6,19 +6,20 @@
 </head>
 <body>
     <h1>Breast Cancer Detection</h1>
+    
     <form method="POST" enctype="multipart/form-data" action="{% url 'predict_image' %}">
         {% csrf_token %}
         <label for="image">Upload a histopathological image:</label>
         <input type="file" name="image" id="image" required>
         <button type="submit">Predict</button>
     </form>
-    {% if prediction %}
-    <h2>Prediction Result: {{ prediction }}</h2>
-    <h3>Uploaded Image:</h3>
-        <img src="{{ image.url }}" alt="Uploaded Image" style="max-width: 400px;">
-{% elif error %}
-    <h2>Error: {{ error }}</h2>
-{% endif %}
 
+    {% if prediction %}
+        <h2>Prediction Result: {{ prediction }}</h2>
+        <h3>Uploaded Image:</h3>
+        <img src="data:image/png;base64,{{ image_data }}" alt="Uploaded Image" style="max-width: 400px;">
+    {% elif error %}
+        <h2>Error: {{ error }}</h2>
+    {% endif %}
 </body>
 </html>
