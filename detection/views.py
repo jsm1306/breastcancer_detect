@@ -1,3 +1,4 @@
+import tensorflow as tf
 from django.shortcuts import render
 from django.apps import apps
 from PIL import Image as PilImage
@@ -6,6 +7,7 @@ import base64
 from io import BytesIO
 from tensorflow.keras.applications.inception_v3 import preprocess_input
 
+tf.config.set_visible_devices([], 'GPU')
 def preprocess_image_django(image_file, target_size=(299, 299)):
     img = PilImage.open(image_file).convert("RGB")
     img = img.resize(target_size)
@@ -18,7 +20,6 @@ def predict_image(request):
     if request.method == "POST" and "image" in request.FILES:
         try:
             img = PilImage.open(request.FILES["image"]).convert("RGB")
-            
             img_array = preprocess_image_django(request.FILES["image"])
 
             detection_config = apps.get_app_config('detection')
@@ -43,4 +44,4 @@ def predict_image(request):
 
     return render(request, "result.html")
 def home(request):
-    return render(request, 'home.html') 
+    return render(request, 'home.html')
