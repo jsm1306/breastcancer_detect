@@ -1,114 +1,68 @@
-/* style.css */
+/* General Body Styles */
 body {
-    font-family: Arial, Helvetica, sans-serif; /* Use a font-family that matches your desired style */
-    background-color: #f5f5f5;
-    color: #333;
+    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.upload-container {
-    border: 2px dashed #007bff;
-    border-radius: 8px;
-    width: 500px;
-    padding: 20px;
-    text-align: center;
-    background-color: #f0f8ff;
-    margin-top: 20px;
-    cursor: pointer;
-}
-.upload-container input[type="file"] {
-    display: none;
-}
-.upload-container label {
-    color: #007bff;
-    font-weight: bold;
-    cursor: pointer;
-}
-.upload-container:hover {
-    background-color: #e6f2ff;
-}
-.predict-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-}
-.predict-button:hover {
-    background-color: #0056b3;
-}
-.prediction-container {
-    margin-top: 30px;
-    width: 500px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fff;
-}
-.prediction-title {
-    font-weight: bold;
+    padding: 0;
+    background-color: #f7f7f7;
     color: #333;
-    margin-bottom: 10px;
-}
-.prediction-result {
-    font-size: 18px;
-    color: #007bff;
-}
-img {
-    max-width: 100%;
-    border-radius: 8px;
-    margin-top: 10px;
-}
-.predict-button2 {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #ff7b00;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-}
-.predict-button2:hover {
-    background-color: #cf5600;
-}
-.color-fg-muted {
-    color: #000000; /* Adjust this hex code for a muted gray color */
-    font-family: Arial, Helvetica, sans-serif; /* Use a font-family that matches your desired style */
-    font-size: 28px; /* Set the font size */
-    line-height: 1.5; /* Adjust line height for readability */
+    line-height: 1.6;
 }
 
+/* Heading Styles */
 h1 {
-    color: #444;
     text-align: center;
-    margin-bottom: 30px;
-    font-size: 2em;
+    color: #2c3e50;
+    margin-top: 20px;
 }
 
-.faq-container {
-    font-family: Arial, Helvetica, sans-serif; /* Use a font-family that matches your desired style */
+/* Paragraph Styles */
+p {
+    margin: 20px auto;
+    padding: 0 15px;
+    max-width: 800px;
+    text-align: justify;
+}
 
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+/* FAQ Container Styles */
+.faq-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
-    width: 100%;
+    margin: 30px auto;
+    padding: 0 15px;
     max-width: 1200px;
 }
 
+/* FAQ Card Styles */
 .faq-card {
     background-color: #ffffff;
-    border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    padding: 20px;
+    width: 300px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.faq-card h2 {
+    font-size: 1.2em;
+    color: #34495e;
+    margin-bottom: 10px;
+}
+
+.faq-card p {
+    font-size: 0.95em;
+    color: #555;
+}
+
+.faq-card a {
+    color: #3498db;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.faq-card a:hover {
+    text-decoration: underline;
 }
 
 .faq-card:hover {
@@ -116,25 +70,126 @@ h1 {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.faq-card h2 {
-    font-size: 1.2em;
-    margin: 0 0 10px;
-    color: #222;
-    font-weight: bold;
+/* Predict Button Styles */
+.predict-button2 {
+    display: block;
+    margin: 30px auto;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.faq-card p {
-    font-size: 0.95em;
-    margin: 0 0 10px;
+.predict-button2:hover {
+    background-color: #2980b9;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .faq-card {
+        width: 90%;
+    }
+
+    p {
+        padding: 0 10px;
+    }
+}
+
+/* Result and Upload Form Styles */
+.main-container {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upload-container {
+    border: 2px dashed #007bff;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
     color: #555;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.2s, color 0.2s;
 }
 
-.faq-card a {
-    font-size: 0.95em;
+.upload-container:hover {
+    background-color: #f1f8ff;
     color: #007bff;
-    text-decoration: none;
 }
 
-.faq-card a:hover {
-    text-decoration: underline;
+.upload-container input[type="file"] {
+    display: none;
+}
+
+.predict-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.predict-button:hover {
+    background-color: #0056b3;
+}
+
+.prediction-container {
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-top: 20px;
+    padding: 15px;
+    width: 100%;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.prediction-title {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.prediction-result {
+    color: #007bff;
+    font-weight: bold;
+    text-align: center;
+}
+
+img {
+    display: block;
+    margin: 10px auto;
+    max-width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.predict-button2 {
+    background-color: #6c757d;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.predict-button2:hover {
+    background-color: #5a6268;
 }

@@ -1,25 +1,120 @@
-{%load static%}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'style.css' %}">
-
     <title>Breast Cancer Detection</title>
     <style>
         body {
-            font-family: Arial, Helvetica, sans-serif; 
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        .main-container {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 600px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: #f9f9f9;
         }
-        h1 {
-            color: #333;
+
+        .upload-container {
+            border: 2px dashed #007bff;
+            border-radius: 5px;
+            padding: 20px;
+            text-align: center;
+            color: #555;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .upload-container:hover {
+            background-color: #f1f8ff;
+            color: #007bff;
+        }
+
+        .upload-container input[type="file"] {
+            display: none;
+        }
+
+        .predict-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .predict-button:hover {
+            background-color: #0056b3;
+        }
+
+        .prediction-container {
+            background: #f8f9fa;
+            border-radius: 8px;
             margin-top: 20px;
+            padding: 15px;
+            width: 100%;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        
+
+        .prediction-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .prediction-result {
+            color: #007bff;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        img {
+            display: block;
+            margin: 10px auto;
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .predict-button2 {
+            background-color: #6c757d;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .predict-button2:hover {
+            background-color: #5a6268;
+        }
     </style>
     <script>
         function updateFileName() {
@@ -34,34 +129,33 @@
     </script>
 </head>
 <body>
-    <h1>Breast Cancer Detection</h1>
-    
-    <form method="POST" enctype="multipart/form-data" action="{% url 'predict_image' %}">
-        {% csrf_token %}
+    <div class="main-container">
+        <h1>Breast Cancer Detection</h1>
         
-        <div class="upload-container" onclick="document.getElementById('image').click()">
-            <label id="file-name">Drag file(s) here or click to browse</label>
-            <input type="file" name="image" id="image" required onchange="updateFileName()">
-        </div>
-        
-        <button type="submit" class="predict-button">Predict</button>
-    </form>
+        <form method="POST" enctype="multipart/form-data" action="{% url 'predict_image' %}">
+            {% csrf_token %}
+            <div class="upload-container" onclick="document.getElementById('image').click()">
+                <label id="file-name">Drag file(s) here or click to browse</label>
+                <input type="file" name="image" id="image" required onchange="updateFileName()">
+            </div>
+            
+            <button type="submit" class="predict-button">Predict</button>
+        </form>
 
-    {% if prediction %}
+        {% if prediction %}
         <div class="prediction-container">
             <div class="prediction-title">Prediction:</div>
             <div class="prediction-result">{{ prediction }}</div>
             <h3>Uploaded Image:</h3>
             <img src="data:image/png;base64,{{ image_data }}" alt="Uploaded Image">
         </div>
-    {% elif error %}
+        {% elif error %}
         <div class="prediction-container">
             <div class="prediction-title">Error:</div>
             <div class="prediction-result">{{ error }}</div>
         </div>
-    {% endif %}
-
-    
+        {% endif %}
+        
         <a href="{% url 'home' %}">
             <button class="predict-button2">Home</button>
         </a>

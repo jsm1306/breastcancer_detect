@@ -1,4 +1,4 @@
-{%load static%}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,57 +7,138 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Breast Cancer Detection</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
-</head>
-<style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+            line-height: 1.6;
+        }
 
-</style>
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 20px;
+        }
+
+        p {
+            margin: 20px auto;
+            padding: 0 15px;
+            max-width: 800px;
+            text-align: justify;
+        }
+
+        .faq-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px auto;
+            padding: 0 15px;
+            max-width: 1200px;
+        }
+
+        .faq-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .faq-card h2 {
+            font-size: 1.2em;
+            color: #34495e;
+            margin-bottom: 10px;
+        }
+
+        .faq-card p {
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .faq-card a {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+
+        .faq-card a:hover {
+            text-decoration: underline;
+        }
+
+        .faq-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .predict-button2 {
+            display: block;
+            margin: 30px auto;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .predict-button2:hover {
+            background-color: #2980b9;
+        }
+
+        @media (max-width: 768px) {
+            .faq-card {
+                width: 90%;
+            }
+
+            p {
+                padding: 0 10px;
+            }
+        }
+    </style>
+</head>
 <body>
+    <h1>Breast Cancer</h1>
+    <p>Breast cancer is one of the most prevalent cancers worldwide, predominantly affecting women but also occurring in men. It arises when cells in the breast grow uncontrollably, forming tumors that can invade nearby tissues or spread to other parts of the body. Risk factors include genetics, age, lifestyle, and hormonal influences. Early diagnosis is crucial as it significantly improves survival rates and treatment outcomes. Techniques such as mammography, ultrasound, and MRI, along with advancements in deep learning for image analysis, have enhanced the ability to detect breast cancer in its early stages, often before symptoms arise. Early detection allows for less aggressive treatments and a better prognosis, underscoring the importance of regular screenings and public awareness.</p>
+    
     <h1 class="color-fg-muted">Frequently Asked Questions about Breast Cancer</h1>
     <div class="faq-container">
-        <!-- Card 1 -->
         <div class="faq-card">
             <h2>What are the symptoms of breast cancer?</h2>
             <p>Common symptoms include lumps in the breast, changes in breast shape, or unusual discharge.</p>
         </div>
-
-        <!-- Card 2 -->
         <div class="faq-card">
             <h2>How is breast cancer diagnosed?</h2>
             <p>Diagnosis involves screening tests like mammograms, ultrasounds, and biopsies.</p>
-       
         </div>
-
-        <!-- Card 3 -->
         <div class="faq-card">
             <h2>What treatment options are available?</h2>
             <p>Treatment can include surgery, radiation, chemotherapy, hormone therapy, and targeted therapy.</p>
         </div>
-
-        <!-- Card 4 -->
         <div class="faq-card">
             <h2>How is AI Used to Detect Breast Cancer?</h2>
             <p>AI helps radiologists detect breast cancer by analyzing medical images for patterns, often spotting abnormalities that might be missed by human eyes.</p>
             <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10625863/#:~:text=In%20the%20diagnostic%20workflow%20for,into%20clinical%20practice%20is%20challenging.">AI in early detection</a>
         </div>
-
-        <!-- Card 5 -->
         <div class="faq-card">
             <h2>Can Breast Cancer Be Found Early?</h2>
-            <p>Breast cancer is sometimes found after symptoms appear, but many women with breast cancer have no symptoms. </p>
+            <p>Breast cancer is sometimes found after symptoms appear, but many women with breast cancer have no symptoms.</p>
         </div>
-
-        <!-- Card 6 -->
         <div class="faq-card">
             <h2>What are the Risk Factors for Breast Cancer?</h2>
             <p>Risk factors include age, family history, and lifestyle choices.</p>
-            <a href="#"></a>
         </div>
-        
     </div>
-    <h1>Please upload an image for detection.</h1>
-
-        <a href="{% url 'predict_image' %}">
-            <button class="predict-button2">Go to Image Prediction</button>
-        </a>
+    
+    <h1>Detection of Breast Cancer:</h1>
+    <a href="{% url 'predict_image' %}">
+        <button class="predict-button2">Go to Image Prediction</button>
+    </a>
 </body>
 </html>
