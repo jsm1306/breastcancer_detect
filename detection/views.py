@@ -1,3 +1,4 @@
+import os
 import tensorflow as tf
 from django.shortcuts import render
 from django.apps import apps
@@ -6,8 +7,13 @@ import numpy as np
 import base64
 from io import BytesIO
 from tensorflow.keras.applications.inception_v3 import preprocess_input
+import gc
 
-tf.config.set_visible_devices([], 'GPU')
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+tf.config.set_visible_devices([], 'GPU')  
+
+gc.collect()
+
 def preprocess_image_django(image_file, target_size=(299, 299)):
     img = PilImage.open(image_file).convert("RGB")
     img = img.resize(target_size)
@@ -43,5 +49,6 @@ def predict_image(request):
             return render(request, "result.html", {"error": f"Error processing image: {str(e)}"})
 
     return render(request, "result.html")
+
 def home(request):
     return render(request, 'home.html')
