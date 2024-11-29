@@ -79,9 +79,3 @@ Since the model file is large, it is not included in the GitHub repository. Ensu
 - **Architecture**: Inception
 - **Accuracy**: 86%
 - **Dataset**: BreakHis dataset
-
-## Future Improvements
-
-- **Improve Model Accuracy**: Experiment with more complex architectures or ensemble methods to increase the accuracy.
-- **Deployment**: Deploy the model on a cloud service for better accessibility.
-- **User Interface**: Improve the user interface for better usability and accessibility.
